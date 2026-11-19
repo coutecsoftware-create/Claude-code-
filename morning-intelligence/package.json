@@ -1,0 +1,17 @@
+{
+  "name": "morning-intelligence",
+  "version": "0.1.0",
+  "description": "Dashboard matinal inteligente com dados reais e atualização automática",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "demo": "MI_FIXTURES=1 node server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.7"
+  }
+}

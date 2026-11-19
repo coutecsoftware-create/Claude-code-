@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Teste IA</title>
+<item><title><![CDATA[[Teste] Anthropic anuncia atualização do Claude para empresas]]></title><description><![CDATA[<p>Item de demonstração sobre lançamento.</p>]]></description><link>https://example.com/teste/ia-1</link><pubDate>{{rfc:60m}}</pubDate></item>
+<item><title><![CDATA[[Teste] OpenAI lança recurso de agentes no ChatGPT]]></title><description><![CDATA[<p>Item de demonstração sobre automação.</p>]]></description><link>https://example.com/teste/ia-2</link><pubDate>{{rfc:140m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Google Gemini ganha novo modelo multimodal]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/ia-3</link><pubDate>{{rfc:300m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Pesquisadores publicam benchmark aberto de LLMs]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/ia-4</link><pubDate>{{rfc:900m}}</pubDate></item>
+</channel></rss>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Teste Tecnologia</title>
+<item><title><![CDATA[[Teste] Fabricante apresenta novo chip para notebooks]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/tec-1</link><pubDate>{{rfc:35m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Falha em serviço de nuvem afeta aplicativos]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/tec-2</link><pubDate>{{rfc:160m}}</pubDate></item>
+</channel></rss>

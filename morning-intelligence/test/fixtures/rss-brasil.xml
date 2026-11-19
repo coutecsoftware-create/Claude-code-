@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Teste Brasil</title>
+<item><title><![CDATA[[Teste] Câmara vota hoje proposta de reforma administrativa]]></title><description><![CDATA[<p>Texto de exemplo para validar o painel; não é uma notícia real.</p>]]></description><link>https://example.com/teste/brasil-1</link><pubDate>{{rfc:25m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Câmara vota hoje proposta de reforma administrativa em plenário]]></title><description><![CDATA[<p>Duplicata proposital com título parecido.</p>]]></description><link>https://example.com/teste/brasil-1b</link><pubDate>{{rfc:40m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Governo anuncia novo calendário de pagamentos]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/brasil-2</link><pubDate>{{rfc:95m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Frente fria avança pelo Sul do país]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/brasil-3</link><pubDate>{{rfc:180m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Notícia antiga que deve ser filtrada]]></title><description><![CDATA[<p>Publicada há 5 dias.</p>]]></description><link>https://example.com/teste/antiga</link><pubDate>{{rfc:7200m}}</pubDate></item>
+</channel></rss>

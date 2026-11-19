@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#05070b">
+  <title>Morning Intelligence</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 9v14L16 30 4 23V9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 9 22 12.5v7L16 23l-6-3.5v-7z" fill="currentColor" opacity=".85"/></svg>
+      <div>
+        <div class="brand-name">MORNING<span>INTELLIGENCE</span></div>
+        <div class="brand-sub" id="brand-sub">Central pessoal de informação</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="conn" id="conn" data-state="connecting" role="status" aria-live="polite">
+        <span class="conn-dot"></span><span class="conn-label">Conectando…</span>
+      </div>
+      <button class="btn" id="refresh-all" type="button" title="Atualizar todos os módulos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Atualizar</span>
+      </button>
+      <button class="btn btn-icon" id="open-settings" type="button" title="Configurações" aria-label="Configurações">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="fixture-banner" id="fixture-banner" hidden>MODO DE TESTE — dados fictícios carregados de arquivos locais. Não use estas informações.</div>
+  <main class="grid" id="grid" aria-live="off"></main>
+  <footer class="foot">
+    <span id="foot-info">Morning Intelligence</span>
+    <span>Dados de fontes públicas; horários de atualização exibidos em cada módulo.</span>
+  </footer>
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawer-title"></aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

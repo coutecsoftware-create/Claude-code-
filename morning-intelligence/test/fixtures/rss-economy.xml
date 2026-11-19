@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Teste Economia</title>
+<item><title><![CDATA[[Teste] Ibovespa abre em alta puxado por commodities]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/eco-1</link><pubDate>{{rfc:15m}}</pubDate></item>
+<item><title><![CDATA[[Teste] Copom divulga ata da última reunião]]></title><description><![CDATA[<p>Item de demonstração.</p>]]></description><link>https://example.com/teste/eco-2</link><pubDate>{{rfc:210m}}</pubDate></item>
+</channel></rss>
