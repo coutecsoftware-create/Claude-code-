@@ -25,6 +25,11 @@ const { server, hub } = createApp({
 
 const port = Number(process.env.PORT || 8787);
 const host = process.env.HOST || '127.0.0.1';
+const loopback = ['127.0.0.1', 'localhost', '::1'].includes(host);
+if (!loopback && !process.env.MI_PASSWORD) {
+  log.error('boot', `HOST=${host} expõe o painel na rede, mas MI_PASSWORD não foi definida. Defina uma senha ou use HOST=127.0.0.1.`);
+  process.exit(1);
+}
 server.listen(port, host, () => {
   log.info('boot', `Morning Intelligence em http://${host}:${port}`);
   hub.start();

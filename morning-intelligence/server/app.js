@@ -1,5 +1,6 @@
 // Monta o servidor HTTP: arquivos estáticos do painel, API JSON e canal SSE em tempo real.
 import { createServer } from 'node:http';
+import { timingSafeEqual, createHash } from 'node:crypto';
 import { readFile, stat } from 'node:fs/promises';
 import { join, normalize, extname, sep } from 'node:path';
 import { ModuleHub } from './core/hub.js';
@@ -147,8 +148,25 @@ export function createApp({ webRoot, settingsPath, fetchImpl, fixtures = false, 
     }
   }
 
+  // Senha de acesso (HTTP Basic). Obrigatória quando o painel fica exposto na internet.
+  const password = env.MI_PASSWORD || '';
+  const digest = (v) => createHash('sha256').update(String(v)).digest();
+  const authorized = (req) => {
+    if (!password) return true;
+    const m = /^Basic\s+(.+)$/i.exec(req.headers.authorization ?? '');
+    if (!m) return false;
+    const decoded = Buffer.from(m[1], 'base64').toString('utf8');
+    const given = decoded.slice(decoded.indexOf(':') + 1);
+    return timingSafeEqual(digest(given), digest(password));
+  };
+
   const server = createServer(async (req, res) => {
     const url = new URL(req.url, 'http://local');
+    if (url.pathname === '/healthz') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end('ok'); }
+    if (!authorized(req)) {
+      res.writeHead(401, { 'www-authenticate': 'Basic realm="Morning Intelligence", charset="UTF-8"', 'content-type': 'text/plain; charset=utf-8' });
+      return res.end('Acesso restrito. Informe a senha do painel.');
+    }
     try {
       if (url.pathname.startsWith('/api/')) return await api(req, res, url);
       if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end(); }

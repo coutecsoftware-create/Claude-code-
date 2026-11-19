@@ -20,7 +20,7 @@ npm start                 # http://127.0.0.1:8787
 | `npm start` | Servidor com dados reais |
 | `npm run dev` | Igual, reiniciando ao salvar arquivos |
 | `npm run demo` | **Modo de teste**: dados fictícios locais, com faixa de aviso amarela na tela |
-| `npm test` | 17 testes automatizados (unidade e integração) |
+| `npm test` | 18 testes automatizados (unidade e integração) |
 
 **Atrás de um proxy HTTP** (rede corporativa, alguns contêineres na nuvem), o `fetch` do Node só usa o proxy se você pedir:
 
@@ -29,6 +29,26 @@ NODE_USE_ENV_PROXY=1 npm start   # usa HTTPS_PROXY / HTTP_PROXY do ambiente
 ```
 
 Por padrão o servidor escuta só em `127.0.0.1`. O painel não tem login, então não o exponha na internet sem antes colocar autenticação na frente.
+
+## Publicar na web (Render, plano gratuito)
+
+O arquivo [`render.yaml`](../render.yaml), na raiz do repositório, já descreve o serviço.
+
+1. Garanta que o código está no GitHub.
+2. Crie uma conta grátis em https://render.com e conecte seu GitHub.
+3. Clique em **New → Blueprint** e escolha este repositório.
+4. Quando o Render pedir `MI_PASSWORD`, crie uma senha forte. É ela que protege o painel.
+5. Ao terminar, o Render mostra um link como `https://morning-intelligence.onrender.com`.
+
+**Como entrar:** o navegador pede usuário e senha. O usuário pode ser qualquer um; a senha é a que você definiu.
+
+**No celular:** abra o link e use "Adicionar à tela inicial" para ter um atalho como se fosse um app.
+
+**Limitações do plano gratuito:**
+- O serviço "dorme" após 15 minutos sem acesso. A primeira abertura leva de 30 a 60 segundos.
+- As configurações salvas na tela voltam ao padrão quando o serviço reinicia. Para fixar cidade e fuso, use as variáveis `MI_CITY`, `MI_LAT`, `MI_LON` e `MI_TIMEZONE` no painel do Render.
+
+**Proteção extra:** com `HOST` diferente de `127.0.0.1`, o servidor se recusa a iniciar sem `MI_PASSWORD`. Assim o painel nunca fica aberto por engano.
 
 ## Arquitetura
 
@@ -146,7 +166,7 @@ A chave fica só no `.env` do servidor. O modelo recebe apenas os fatos já vali
 
 ## Testes
 
-`npm test` roda 17 testes com `node:test`, sem acessar a internet. Eles cobrem:
+`npm test` roda 18 testes com `node:test`, sem acessar a internet. Eles cobrem:
 
 - leitura de RSS e Atom, limpeza de HTML e bloqueio de links `javascript:`;
 - deduplicação e filtro de recência;

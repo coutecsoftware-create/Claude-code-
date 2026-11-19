@@ -118,3 +118,20 @@ test('segurança: CSRF, path traversal, cabeçalhos e validação de configuraç
     await app.close();
   }
 });
+
+test('senha de acesso: bloqueia sem credencial e libera com a senha certa', async () => {
+  const { mkdtempSync: mk } = await import('node:fs');
+  const dir = mk(join(tmpdir(), 'mi-'));
+  const app = createApp({ webRoot: join(root, 'web'), settingsPath: join(dir, 's.json'), fetchImpl: createFixtureFetch(join(root, 'test', 'fixtures')), env: { MI_PASSWORD: 'segredo123' } });
+  await new Promise((r) => app.server.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${app.server.address().port}`;
+  const auth = (p) => ({ authorization: `Basic ${Buffer.from(`eu:${p}`).toString('base64')}` });
+  try {
+    assert.equal((await fetch(`${base}/`)).status, 401);
+    assert.equal((await fetch(`${base}/api/modules`, { headers: auth('errada') })).status, 401);
+    assert.equal((await fetch(`${base}/api/modules`, { headers: auth('segredo123') })).status, 200);
+    assert.equal((await fetch(`${base}/healthz`)).status, 200);
+  } finally {
+    app.server.closeAllConnections(); await new Promise((r) => app.server.close(r));
+  }
+});
